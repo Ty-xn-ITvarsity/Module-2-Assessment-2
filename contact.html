@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Pine City Mall</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .contact-cards {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 3rem 0;
+    }
+    .contact-card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      border: 1.5px solid #e0e4ea;
+      padding: 2rem 2rem 1.5rem 2rem;
+      min-width: 280px;
+      max-width: 370px;
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .contact-card h2 {
+      font-size: 1.3rem;
+      color: #0d7377;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .contact-card p, .contact-card ul, .contact-card label {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+    .contact-card ul {
+      padding-left: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+    .contact-card a {
+      color: #0d7377;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-card a:hover {
+      text-decoration: underline;
+      color: #055960;
+    }
+    .contact-card form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-card .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .contact-card input,
+    .contact-card textarea {
+      padding: 0.7rem;
+      border-radius: 7px;
+      border: 1px solid #e0e4ea;
+      font-size: 1rem;
+      background: #f7f8fa;
+      transition: border 0.2s;
+    }
+    .contact-card input:focus,
+    .contact-card textarea:focus {
+      border-color: #0d7377;
+      outline: none;
+    }
+    .contact-card button {
+      background: #0d7377;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 0.7rem 1.5rem;
+      font-size: 1.08rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+    }
+    .contact-card button:hover {
+      background: #055960;
+      color: #ffd60a;
+    }
+    .form-status {
+      color: #0d7377;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    .map-embed {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
+    .map-embed iframe {
+      border-radius: 10px;
+      border: 1.5px solid #e0e4ea;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      width: 100%;
+      max-width: 370px;
+      height: 220px;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 900px) {
+      .contact-cards { flex-direction: column; align-items: center; gap: 1.5rem; }
+      .contact-card, .map-embed iframe { max-width: 98vw; }
+    }
+  </style>
+</head>
+<body>
+<header id="header">
+  <div class="logo-container">
+    <img src="images/pine logo.png" alt="Pine City Mall Logo" class="mall-logo">
+    <h1>Pine City Mall</h1>
+  </div>
+  <nav id="main-nav" aria-label="Main Navigation">
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="map.html">Map</a></li>
+      <li><a href="shops.html">Shops</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="contact.html" aria-current="page">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero-img-container">
+  <img src="images/mall.webp" alt="Pine City Mall Contact" class="hero-img">
+  <div class="hero-text-overlay">
+    <h2>Get In Touch</h2>
+    <p>We'd love to hear from you</p>
+  </div>
+</section>
+
+<main id="content">
+  <div class="contact-cards">
+    <!-- Visit Us Card -->
+    <section class="contact-card" aria-labelledby="visit-heading">
+      <h2 id="visit-heading"><i class="fas fa-map-marker-alt"></i> Visit Us</h2>
+      <p><strong>Address:</strong> 123 Main Street, Pine City</p>
+      <p><strong>Phone:</strong> +27 (11) 123 4567</p>
+      <p><strong>Email:</strong> <a href="mailto:info@pinecitymall.com">info@pinecitymall.com</a></p>
+      <p><strong>Trading Hours:</strong></p>
+      <ul class="hours">
+        <li>Mon – Fri: 09:00 – 19:00</li>
+        <li>Sat: 09:00 – 18:00</li>
+        <li>Sun & Public Holidays: 09:00 – 17:00</li>
+      </ul>
+    </section>
+
+    <!-- Send Us a Message Card -->
+    <section class="contact-card" aria-labelledby="form-heading">
+      <h2 id="form-heading"><i class="fas fa-envelope"></i> Send Us a Message</h2>
+      <form id="contact-form" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+        <p class="form-status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Location Map Card -->
+    <section class="contact-card map-embed" aria-labelledby="map-heading">
+      <h2 id="map-heading"><i class="fas fa-location-arrow"></i> Location Map</h2>
+      <iframe title="Pine City Mall Map" loading="lazy"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.5!2d28.0!3d-25.8!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e954d0!2s123%20Main%20Street%20Pine%20City!5e0!3m2!1sen!2s" 
+        allowfullscreen></iframe>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="socials">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+    <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+    <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms of Use</a>
+  </div>
+  <p>&copy; 2025 Pine City Mall. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

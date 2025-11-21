@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Pine City Mall</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    .card-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .small-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      padding: 1.5rem 1.5rem;
+      min-width: 160px;
+      max-width: 220px;
+      text-align: center;
+      margin: 0.7rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .counter-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0d7377;
+      margin-bottom: 0.4rem;
+    }
+    .counter-label {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .card-icon {
+      font-size: 2rem;
+      color: #0d7377;
+      margin-bottom: 0.4rem;
+    }
+    .card-title {
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+    .card-value {
+      color: #0d7377;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+    .event-btn {
+      display: inline-block;
+      background: #0d7377;
+      color: #fff;
+      padding: 0.7rem 1.5rem;
+      border-radius: 22px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 0.7rem;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      font-size: 1.1rem;
+    }
+    .event-btn:hover {
+      background: #055960;
+      color: #ffd60a;
+    }
+    /* Gallery and What's On images bigger */
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+    .photo-gallery img,
+    .whats-on-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+      background: #eee;
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      color: #0d7377;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+    @media (max-width: 600px) {
+      .card-row { flex-direction: column; align-items: center; }
+      .photo-gallery { grid-template-columns: 1fr 1fr; }
+      .small-card { min-width: 120px; max-width: 100%; padding: 1rem; }
+      .photo-gallery img,
+      .whats-on-img { height: 100px; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo-container">
+      <img src="images/pine logo.png" alt="Pine City Mall Logo" class="mall-logo">
+      <h1>Pine City Mall</h1>
+    </div>
+    <nav id="main-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="shops.html">Shops</a></li>
+        <li><a href="movies.html">Movies</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero-img-container">
+    <img src="images/mall8.jpg" alt="Pine City Mall Interior" class="hero-img">
+    <div class="hero-text-overlay">
+      <h2>About Pine City Mall</h2>
+      <p>Your destination for fashion, food, and fun in the heart of Johannesburg.</p>
+    </div>
+  </section>
+
+  <main id="content">
+    <section class="about-intro">
+      <h2 class="section-title">Welcome to Pine City Mall</h2>
+      <p style="text-align:center;">Pine City Mall – A people-powered and community-centred destination in the heart of Johannesburg. Affectionately known as The Pine, we are home to approximately 200 stores of retail heaven. Discover the latest styles, beauty trends, delectable tastes, and stunning décor – all under one roof. With everything and more, Pine City is the ultimate one-stop, to-shop-it-all.</p>
+    </section>
+
+    <!-- Counter Cards -->
+    <section>
+      <h2 class="section-title">Mall At A Glance</h2>
+      <div class="card-row">
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-store"></i></span>
+          <span class="counter-number">200+</span>
+          <span class="counter-label">Stores</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-utensils"></i></span>
+          <span class="counter-number">30+</span>
+          <span class="counter-label">Restaurants</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-parking"></i></span>
+          <span class="counter-number">4000+</span>
+          <span class="counter-label">Parking Bays</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-calendar-week"></i></span>
+          <span class="counter-number">7</span>
+          <span class="counter-label">Days a Week</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trading Hours Cards -->
+    <section>
+      <h2 class="section-title">Trading Hours</h2>
+      <div class="card-row">
+        <div class="small-card">
+          <span class="card-title">Mon – Fri</span>
+          <span class="card-value">09:00 – 19:00</span>
+        </div>
+        <div class="small-card">
+          <span class="card-title">Saturday</span>
+          <span class="card-value">09:00 – 18:00</span>
+        </div>
+        <div class="small-card">
+          <span class="card-title">Sunday</span>
+          <span class="card-value">09:00 – 17:00</span>
+        </div>
+        <div class="small-card">
+          <span class="card-title">Public Holidays</span>
+          <span class="card-value">09:00 – 17:00</span>
+        </div>
+      </div>
+      <p class="note" style="text-align:center;"><em>Individual store hours may vary.</em></p>
+    </section>
+
+    <!-- Facilities Cards -->
+    <section>
+      <h2 class="section-title">Facilities & Services</h2>
+      <div class="card-row">
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-wifi"></i></span>
+          <span class="card-title">Free Wi-Fi</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-parking"></i></span>
+          <span class="card-title">Secure Parking</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-wheelchair"></i></span>
+          <span class="card-title">Wheelchair Access</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-credit-card"></i></span>
+          <span class="card-title">ATMs</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-baby"></i></span>
+          <span class="card-title">Baby Changing</span>
+        </div>
+        <div class="small-card">
+          <span class="card-icon"><i class="fas fa-car"></i></span>
+          <span class="card-title">Car Wash</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- What's On -->
+    <section>
+      <h2 class="section-title">What's On</h2>
+      <div class="card-row">
+        <div class="small-card" style="max-width:220px;">
+          <img src="images/promotional.jpeg" alt="Seasonal Promotions" class="whats-on-img">
+          <span class="card-title">Seasonal Promotions</span>
+          <span style="font-size:0.95rem;color:#555;">Deals across fashion, beauty, and tech.</span>
+          <a href="shops.html" class="event-btn">Browse Stores</a>
+        </div>
+        <div class="small-card" style="max-width:220px;">
+          <img src="images/foodcourt.jpg" alt="Food Court" class="whats-on-img">
+          <span class="card-title">Dine With Us</span>
+          <span style="font-size:0.95rem;color:#555;">Quick bites & restaurants.</span>
+          <a href="shops.html" class="event-btn">See Restaurants</a>
+        </div>
+        <div class="small-card" style="max-width:220px;">
+          <img src="images/movie2.jpeg" alt="Entertainment" class="whats-on-img">
+          <span class="card-title">Entertainment</span>
+          <span style="font-size:0.95rem;color:#555;">Movies & more for family.</span>
+          <a href="movies.html" class="event-btn">View Movies</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section>
+      <h2 class="section-title">Photo Gallery</h2>
+      <div class="photo-gallery">
+        <img src="images/mall1.jpg" alt="Mall Interior 1" loading="lazy">
+        <img src="images/mall2.jpg" alt="Mall Interior 2" loading="lazy">
+        <img src="images/mall3.jpg" alt="Mall Interior 3" loading="lazy">
+        <img src="images/mall4.jpg" alt="Mall Interior 4" loading="lazy">
+        <img src="images/mall5.jpg" alt="Mall Interior 5" loading="lazy">
+        <img src="images/mall6.jpg" alt="Mall Interior 6" loading="lazy">
+      </div>
+    </section>
+  </main>
+
+  <!-- Image Modal -->
+  <div id="imgModal" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
+    <span id="closeModal" style="position:absolute;top:30px;right:40px;font-size:2rem;color:#fff;cursor:pointer;">&times;</span>
+    <img id="modalImg" src="" alt="Full Size" style="max-width:90vw;max-height:90vh;border-radius:10px;box-shadow:0 2px 16px #000;">
+  </div>
+  <script>
+    // Open modal on image click
+    document.querySelectorAll('.photo-gallery img, .whats-on-img').forEach(function(img) {
+      img.addEventListener('click', function() {
+        document.getElementById('modalImg').src = this.src;
+        document.getElementById('imgModal').style.display = 'flex';
+      });
+    });
+    // Close modal
+    document.getElementById('closeModal').onclick = function() {
+      document.getElementById('imgModal').style.display = 'none';
+      document.getElementById('modalImg').src = '';
+    };
+    // Close modal when clicking outside image
+    document.getElementById('imgModal').onclick = function(e) {
+      if(e.target === this) {
+        this.style.display = 'none';
+        document.getElementById('modalImg').src = '';
+      }
+    };
+  </script>
+
+  <footer>
+    <div class="socials">
+      <a href="#"><i class="fab fa-facebook-square"></i></a>
+      <a href="#"><i class="fab fa-instagram-square"></i></a>
+      <a href="#"><i class="fab fa-twitter-square"></i></a>
+      <a href="#"><i class="fab fa-pinterest-square"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Use</a>
+    </div>
+    <p>&copy; 2025 Pine City Mall. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

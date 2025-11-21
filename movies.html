@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Movies - Pine City Mall</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .movies-title {
+            text-align: center;
+            color: #0d7377;
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem 0;
+        }
+        .movies-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .movie-card {
+            display: flex;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            overflow: hidden;
+            align-items: stretch;
+            min-height: 340px;
+            border: 1.5px solid #e0e4ea;
+            margin-bottom: 0.5rem;
+        }
+        .movie-poster {
+            flex: 0 0 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f7f8fa;
+            border-right: 2px solid #e0e4ea;
+        }
+        .movie-poster img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #eee;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: block;
+        }
+        .movie-details {
+            flex: 1;
+            padding: 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 300px;
+        }
+        .movie-details h3 {
+            color: #0d7377;
+            font-size: 1.6rem;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+        .movie-info p {
+            margin: 0.2rem 0;
+            color: #444;
+            font-size: 1.08rem;
+        }
+        .movie-section h4 {
+            margin: 0.7rem 0 0.2rem 0;
+            color: #055960;
+            font-size: 1.08rem;
+        }
+        .movie-section p {
+            margin: 0 0 0.5rem 0;
+            color: #555;
+            font-size: 1.05rem;
+        }
+        .showtimes-section h4 {
+            margin: 0.7rem 0 0.2rem 0;
+            color: #055960;
+            font-size: 1.08rem;
+        }
+        .showtime-options {
+            display: flex;
+            gap: 1.2rem;
+            margin-bottom: 0.7rem;
+        }
+        .showtime-slot label {
+            margin-left: 0.3rem;
+            font-size: 1.05rem;
+            color: #222;
+        }
+        .movie-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .btn {
+            background: #0d7377;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.08rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn:hover {
+            background: #055960;
+            color: #ffd60a;
+        }
+        /* Trailer Modal */
+        .trailer-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .trailer-content {
+            background: #222;
+            border-radius: 12px;
+            padding: 1rem;
+            position: relative;
+            max-width: 800px;
+            width: 95vw;
+        }
+        .trailer-content iframe {
+            border-radius: 8px;
+            width: 100%;
+            height: 400px;
+            background: #000;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 18px;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+        }
+        @media (max-width: 900px) {
+            .movie-card { flex-direction: column; align-items: center; min-height: unset; }
+            .movie-poster { justify-content: center; border-right: none; border-bottom: 2px solid #e0e4ea; }
+            .movie-poster img { width: 70vw; max-width: 320px; height: 220px; }
+            .movie-details { padding: 1.2rem; min-height: unset; }
+            .trailer-content iframe { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="logo-container">
+            <img src="images/pine logo.png" alt="Pine City Mall Logo" class="mall-logo">
+            <h1>Pine City Mall</h1>
+        </div>
+        <nav id="main-nav" aria-label="Main Navigation">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="shops.html">Shops</a></li>
+                <li><a href="movies.html" aria-current="page">Movies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="content">
+        <h2 class="movies-title">NOW SHOWING</h2>
+        <div class="movies-grid">
+            <!-- Movie 1: Avengers Endgame -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="images/avengers.jpg" alt="Avengers Endgame">
+                </div>
+                <div class="movie-details">
+                    <h3>The Avengers: Endgame</h3>
+                    <div class="movie-info">
+                        <p><strong>Rating:</strong> PG 10-12 DLV</p>
+                        <p><strong>Duration:</strong> 3h 01m</p>
+                        <p><strong>Genre:</strong> Action, Adventure, Sci-Fi</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Cast:</h4>
+                        <p>Robert Downey Jr., Chris Evans, Mark Ruffalo, Chris Hemsworth, Scarlett Johansson, Jeremy Renner</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Synopsis:</h4>
+                        <p>After the devastating events, the Avengers assemble once more to reverse Thanos' actions and restore balance to the universe.</p>
+                    </div>
+                    <div class="showtimes-section">
+                        <h4>Select Showtime:</h4>
+                        <div class="showtime-options">
+                            <div class="showtime-slot">
+                                <input type="radio" id="avengers-1" name="avengers-time" value="12:00 PM">
+                                <label for="avengers-1">12:00 PM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="avengers-2" name="avengers-time" value="3:00 PM">
+                                <label for="avengers-2">3:00 PM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="avengers-3" name="avengers-time" value="6:00 PM">
+                                <label for="avengers-3">6:00 PM</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="btn btn-trailer" onclick="playTrailer('avengers')">
+                            <i class="fas fa-play"></i> Watch Trailer
+                        </button>
+                        <button class="btn btn-book" onclick="bookTicket('avengers')">
+                            <i class="fas fa-ticket-alt"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Movie 2: Justice League -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="images/justice league.jpg" alt="Justice League">
+                </div>
+                <div class="movie-details">
+                    <h3>Justice League</h3>
+                    <div class="movie-info">
+                        <p><strong>Rating:</strong> PG 13 V</p>
+                        <p><strong>Duration:</strong> 2h 1m</p>
+                        <p><strong>Genre:</strong> Action, Adventure</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Cast:</h4>
+                        <p>Ben Affleck, Henry Cavill, Amy Adams, Gal Gadot, Ezra Miller, Jason Momoa, Ray Fisher</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Synopsis:</h4>
+                        <p>When an alien threat emerges, the heroes must unite to save the world from destruction.</p>
+                    </div>
+                    <div class="showtimes-section">
+                        <h4>Select Showtime:</h4>
+                        <div class="showtime-options">
+                            <div class="showtime-slot">
+                                <input type="radio" id="justice-1" name="justice-time" value="1:00 PM">
+                                <label for="justice-1">1:00 PM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="justice-2" name="justice-time" value="4:00 PM">
+                                <label for="justice-2">4:00 PM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="justice-3" name="justice-time" value="7:00 PM">
+                                <label for="justice-3">7:00 PM</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="btn btn-trailer" onclick="playTrailer('justice')">
+                            <i class="fas fa-play"></i> Watch Trailer
+                        </button>
+                        <button class="btn btn-book" onclick="bookTicket('justice')">
+                            <i class="fas fa-ticket-alt"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Movie 3: John Wick Chapter 3 -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="images/john wick3.png" alt="John Wick 3">
+                </div>
+                <div class="movie-details">
+                    <h3>John Wick: Chapter 3 - Parabellum</h3>
+                    <div class="movie-info">
+                        <p><strong>Rating:</strong> PG 16 LV</p>
+                        <p><strong>Duration:</strong> 2h 11m</p>
+                        <p><strong>Genre:</strong> Action, Thriller</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Cast:</h4>
+                        <p>Keanu Reeves, Halle Berry, Laurence Fishburne, Mark Dacascos, Asia Kate Dillon, Lance Reddick</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Synopsis:</h4>
+                        <p>John Wick is on the run after the events in New York. Wanted by every assassin in the world, he needs to escape and survive.</p>
+                    </div>
+                    <div class="showtimes-section">
+                        <h4>Select Showtime:</h4>
+                        <div class="showtime-options">
+                            <div class="showtime-slot">
+                                <input type="radio" id="john-1" name="john-time" value="2:00 PM">
+                                <label for="john-1">2:00 PM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="john-2" name="john-time" value="5:00 PM">
+                                <label for="john-2">5:00 PM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="john-3" name="john-time" value="8:00 PM">
+                                <label for="john-3">8:00 PM</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="btn btn-trailer" onclick="playTrailer('john')">
+                            <i class="fas fa-play"></i> Watch Trailer
+                        </button>
+                        <button class="btn btn-book" onclick="bookTicket('john')">
+                            <i class="fas fa-ticket-alt"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Movie 4: The Matrix -->
+            <div class="movie-card">
+                <div class="movie-poster">
+                    <img src="images/the matrix.jpg" alt="The Matrix">
+                </div>
+                <div class="movie-details">
+                    <h3>The Matrix</h3>
+                    <div class="movie-info">
+                        <p><strong>Rating:</strong> PG 13 V</p>
+                        <p><strong>Duration:</strong> 2h 16m</p>
+                        <p><strong>Genre:</strong> Sci-Fi, Action</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Cast:</h4>
+                        <p>Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, Joe Pantoliano</p>
+                    </div>
+                    <div class="movie-section">
+                        <h4>Synopsis:</h4>
+                        <p>A computer hacker learns about the true nature of reality and his role in the war against its controllers.</p>
+                    </div>
+                    <div class="showtimes-section">
+                        <h4>Select Showtime:</h4>
+                        <div class="showtime-options">
+                            <div class="showtime-slot">
+                                <input type="radio" id="matrix-1" name="matrix-time" value="11:00 AM">
+                                <label for="matrix-1">11:00 AM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="matrix-2" name="matrix-time" value="3:30 PM">
+                                <label for="matrix-2">3:30 PM</label>
+                            </div>
+                            <div class="showtime-slot">
+                                <input type="radio" id="matrix-3" name="matrix-time" value="7:30 PM">
+                                <label for="matrix-3">7:30 PM</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movie-actions">
+                        <button class="btn btn-trailer" onclick="playTrailer('matrix')">
+                            <i class="fas fa-play"></i> Watch Trailer
+                        </button>
+                        <button class="btn btn-book" onclick="bookTicket('matrix')">
+                            <i class="fas fa-ticket-alt"></i> Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Trailer Modal -->
+    <div id="trailerModal" class="trailer-modal">
+        <div class="trailer-content">
+            <span class="close" onclick="closeTrailer()">&times;</span>
+            <iframe id="trailerFrame" width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <div class="socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram-square"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter-square"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-square"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Use</a>
+        </div>
+        <p>&copy; 2025 Pine City Mall. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Trailer Links
+        const trailerLinks = {
+            'avengers': 'https://www.youtube.com/embed/TcMBFSGVi1c?autoplay=1',
+            'justice': 'https://www.youtube.com/embed/3cxixDgHUYw?autoplay=1',
+            'john': 'https://www.youtube.com/embed/LaEjB78QLSE?autoplay=1',
+            'matrix': 'https://www.youtube.com/embed/vKQi3bBA1y8?autoplay=1'
+        };
+
+        function playTrailer(movieId) {
+            const modal = document.getElementById('trailerModal');
+            const trailerFrame = document.getElementById('trailerFrame');
+            trailerFrame.src = trailerLinks[movieId];
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTrailer() {
+            const modal = document.getElementById('trailerModal');
+            const trailerFrame = document.getElementById('trailerFrame');
+            modal.style.display = 'none';
+            trailerFrame.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('trailerModal');
+            if (event.target === modal) {
+                closeTrailer();
+            }
+        };
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeTrailer();
+            }
+        });
+
+        function bookTicket(movieId) {
+            const movieNames = {
+                'avengers': 'The Avengers: Endgame',
+                'justice': 'Justice League',
+                'john': 'John Wick: Chapter 3',
+                'matrix': 'The Matrix'
+            };
+
+            const radioButtons = document.querySelectorAll(`input[name="${movieId}-time"]`);
+            let selectedTime = null;
+            radioButtons.forEach(radio => {
+                if (radio.checked) {
+                    selectedTime = radio.value;
+                }
+            });
+
+            if (selectedTime) {
+                alert(`Booking ${movieNames[movieId]} at ${selectedTime}!\nRedirecting to payment...`);
+                // window.location.href = 'booking.html?movie=' + movieId + '&time=' + selectedTime;
+            } else {
+                alert('Please select a showtime first!');
+            }
+        }
+    </script>
+</body>
+</html>
